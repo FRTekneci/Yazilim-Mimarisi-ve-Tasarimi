@@ -120,3 +120,96 @@ public class BuilderDemo{
 }
 ...
 BuilderDemo adında sınıf oluşturuldu.
+##Komut (Command) Tasarım Deseni  
+
+Davranışsal (Behavioral) tasarım kalıplarından biri olan komut tasarım kalıbı, nesneye dayalı programlama (Object Oriented Programing) çalışmalarında çoğu zaman farkında olmadan kullanılan bir yapıdır. Komut tasarım kalıbı, kullanıcı isteklerini gerçekleştiren kod yapısının sarmalanarak nesneler halinde saklanmasına dayanır. Öyle ki üzerinde çalışılacak nesnenin tanımının yapılamadığı durumlar olabilir. Bu şartlarda ne tür çözüm yolları ile nesneye müdahale edilmeye çalışılabileceği kestirilemez, ancak gerçekleştirilmek istenen işlemler bir nesne olarak sarmalanır. Nesne halinde tutulan bu sarmal kod yapısı, alıcı nesne için bir çözüm oluşturur. Çözümlerin nesneler halinde saklanmasının getirisi olarak da komut tasarım kalıbı aynı kod yapısının tekrar tekrar kullanılabilmesine olanak sağlar.  
+![Image of Class](https://github.com/FRTekneci/Yazilim-Mimarisi-ve-Tasarimi/blob/master/commanduml.jpg)  
+
+
+````java
+public interface ActionListenerCommand {  
+    public void execute();  
+}  
+```
+Komut görevi görecek ActionListernerCommand arabirimi oluşturuldu.  
+Document.java:
+```java
+public class Document {  
+          public void open(){  
+           System.out.println("Document Opened");  
+       }  
+       public void save(){  
+           System.out.println("Document Saved");  
+       }  
+} 
+
+```
+Alıcı görevi görecek bir belge sınıfı oluşturuldu.
+
+ActionOpen.java:
+```java
+
+public class ActionOpen implements ActionListenerCommand{  
+    private Document doc;  
+    public ActionOpen(Document doc) {  
+        this.doc = doc;  
+    }  
+    @Override  
+    public void execute() {  
+        doc.open();  
+    }  
+} 
+
+```
+ConcreteCommand işlevi görecek bir ActionOpen sınıfı oluşturuldu.  
+AdapterPatternDemo.java
+```java
+public class ActionSave implements ActionListenerCommand{  
+   private Document doc;  
+   public ActionSave(Document doc) {  
+        this.doc = doc;  
+    }  
+    @Override  
+    public void execute() {  
+        doc.save();  
+    }  
+}
+
+``` 
+ConcreteCommand işlevi görecek bir ActionSave sınıfı oluşturun.
+ ActionSave.java:
+ ```java
+
+public class ActionSave implements ActionListenerCommand{  
+   private Document doc;  
+    public ActionSave(Document doc) {  
+        this.doc = doc;  
+    }  
+    @Override  
+    public void execute() {  
+        doc.save();  
+    }  
+}  
+
+```
+Invoker işlevi görecek bir MenuOptıons sınıfı oluşturuldu.
+AdapterPatternDemo.java:
+```java
+
+public class CommandPatternClient {  
+    public static void main(String[] args) {  
+        Document doc = new Document();  
+          
+        ActionListenerCommand clickOpen = new ActionOpen(doc);  
+        ActionListenerCommand clickSave = new ActionSave(doc);  
+          
+        MenuOptions menu = new MenuOptions(clickOpen, clickSave);  
+          
+        menu.clickOpen();  
+        menu.clickSave();  
+   }  
+}
+```
+İstemci işlevi görecek bir CommanClient sınıfı oluşturuldu.
+
+
