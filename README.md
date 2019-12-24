@@ -118,15 +118,19 @@ public class BuilderDemo{
    cdType2.showItems();  
  }  
 }
-...
-BuilderDemo adında sınıf oluşturuldu.
-##Komut (Command) Tasarım Deseni  
+
+```
+
+ BuilderDemo adında sınıf oluşturuldu.
+## Komut (Command) Tasarım Deseni  
 
 Davranışsal (Behavioral) tasarım kalıplarından biri olan komut tasarım kalıbı, nesneye dayalı programlama (Object Oriented Programing) çalışmalarında çoğu zaman farkında olmadan kullanılan bir yapıdır. Komut tasarım kalıbı, kullanıcı isteklerini gerçekleştiren kod yapısının sarmalanarak nesneler halinde saklanmasına dayanır. Öyle ki üzerinde çalışılacak nesnenin tanımının yapılamadığı durumlar olabilir. Bu şartlarda ne tür çözüm yolları ile nesneye müdahale edilmeye çalışılabileceği kestirilemez, ancak gerçekleştirilmek istenen işlemler bir nesne olarak sarmalanır. Nesne halinde tutulan bu sarmal kod yapısı, alıcı nesne için bir çözüm oluşturur. Çözümlerin nesneler halinde saklanmasının getirisi olarak da komut tasarım kalıbı aynı kod yapısının tekrar tekrar kullanılabilmesine olanak sağlar.  
+
+
 ![Image of Class](https://github.com/FRTekneci/Yazilim-Mimarisi-ve-Tasarimi/blob/master/commanduml.jpg)  
 
 
-````java
+```java
 public interface ActionListenerCommand {  
     public void execute();  
 }  
