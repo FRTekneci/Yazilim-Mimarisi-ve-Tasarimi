@@ -5,3 +5,5 @@ Ana avantajları şunlardır:
 o	Bir nesnenin yapımı ve temsili arasında net bir ayrım sağlar.
 o	Kurucu süreci üzerinde daha iyi kontrol sağlar.
 o	Bu nesnelerin iç temsilini değiştirmeyi için destekler.  
+
+![Image of Class](https://github.com/FRTekneci/Yazilim-Mimarisi-ve-Tasarimi/blob/master/commanduml.jpg)
